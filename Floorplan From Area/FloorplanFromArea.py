@@ -129,6 +129,15 @@ rotation_angles = []
 areas = []
 errorlist = []
 
+
+
+# disable temporary hide isolate mode of the active view
+t1.Start()
+view.DisableTemporaryViewMode(TemporaryViewMode.TemporaryHideIsolate)
+t1.Commit()
+
+
+
 t.Start()
 
 for a in elements:
@@ -144,7 +153,6 @@ for a in elements:
         AreaPlan = ViewPlan.Create(doc, type_id, a.LevelId)
     else:
         AreaPlan = doc.GetElement(doc.ActiveView.Duplicate(ViewDuplicateOption.WithDetailing))
-        AreaPlan.DisableTemporaryViewMode(TemporaryViewMode.TemporaryHideIsolate)
         AreaPlan.CropBoxActive = False
         AreaPlan.ViewTemplateId = ElementId(-1)
     AreaPlan.LookupParameter("IPA View Sub Group").Set("400")
@@ -228,11 +236,6 @@ if(floatAngle != math.radians(0)):
             pass
         temp4.Commit()
 
-
-# disable temporary hide isolate mode of the active view
-t1.Start()
-view.DisableTemporaryViewMode(TemporaryViewMode.TemporaryHideIsolate)
-t1.Commit()
 
 
 if errorlist != []:  
