@@ -12,9 +12,10 @@ from System.Collections.Generic import List
 from rpw import db, ui, doc, uidoc
 from pyrevit import forms, revit
 
+import logexporter
+
 import sys
 import math
-
 
 
 # Create a parameter to point at the current document
@@ -112,11 +113,11 @@ floatAngle = (-float(rotationAngle) * math.pi) / 180
 
 # Input for duplicating the view with detailing
 detailing = forms.CommandSwitchWindow.show(
-    ["YES", "NO"],
-     message="Create new floorplan? 'YES' or 'NO' (duplicate the active view with detailing):"
+    ["Create new Floor / Area plan", "Duplicate the Active View with detailing"],
+     message="How would you like the new view(s) to be created?"
 	)
 
-if detailing == "YES":
+if detailing == "Create new Floor / Area plan":
     noDetailing = True
 else:
     noDetailing = False
@@ -155,6 +156,8 @@ for a in elements:
         AreaPlan = doc.GetElement(doc.ActiveView.Duplicate(ViewDuplicateOption.WithDetailing))
         AreaPlan.CropBoxActive = False
         AreaPlan.ViewTemplateId = ElementId(-1)
+        AreaPlan.get_Parameter(BuiltInParameter.VIEWER_VOLUME_OF_INTEREST_CROP).Set(ElementId(-1))
+        AreaPlan.get_Parameter(BuiltInParameter.PLAN_VIEW_NORTH).Set(0)
     AreaPlan.LookupParameter("IPA View Sub Group").Set("400")
     AreaPlan.LookupParameter("Phasing").Set(doc.ActiveView.LookupParameter("Phasing").AsString())
     AreaPlan.ViewTemplateId = res_id
@@ -242,3 +245,8 @@ if errorlist != []:
     print("The following Areas were found to have problematic contours, thus their floorplan views do not have Crop Region applied. You could check those areas' contours by their ids:\n\n {}".format(errorlist))
 else:
     print("All area plans were created successfully!")
+
+# Export log file
+current_file = __file__.split("\\")
+script_data = (current_file[-1].split("_"))[0]
+logexporter.logExport(script_data)
