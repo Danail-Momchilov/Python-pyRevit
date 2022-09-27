@@ -12,6 +12,8 @@
 
 ![image](https://user-images.githubusercontent.com/46314846/192531914-6962d78c-0f9d-413a-ae6f-afefd8d74f36.png)
 
+> in any case, all 'false category' windows will be filtered away, based on their host 
+
 > next, yoo will be asked to specify a prefix and a string length
 
 ![image](https://user-images.githubusercontent.com/46314846/192532342-ba9b26a4-df7e-4e42-a7f9-6c669fd2a4d9.png)
@@ -21,4 +23,6 @@
 
 ![image](https://user-images.githubusercontent.com/46314846/192532532-cfca8fc7-3257-4096-a2e9-fcf86e82a6b6.png)
 
-> this is just a really simple and quick renumbering tool, based on general location
+> this is just a really simple and quick renumbering tool, based on general location, much more complex ones were created for specific cases
+
+> the identical tool is available for doors as well
