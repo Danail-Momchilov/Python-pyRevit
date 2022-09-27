@@ -6,7 +6,7 @@
 
 ![image](https://user-images.githubusercontent.com/46314846/192531320-9d8f2af9-5c53-42cf-8fd3-fde0042de252.png)
 
-> if one of the first two options is selected, the program will automatically retrieve either all windows in the project, or the one in the active view
+> if one of the first two options is selected, the program will automatically retrieve either all windows, or the ones in the active view
 > if 'Select Windows' option is chosen, you will be asked to make your selection, using a selection rectangle with a category filter
 
 ![image](https://user-images.githubusercontent.com/46314846/192531914-6962d78c-0f9d-413a-ae6f-afefd8d74f36.png)
